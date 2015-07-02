@@ -2,9 +2,11 @@
 
 a finite element solver for poisson's equation
 
+![neat](neat.png)
+
 ### what is this? ###
 * a mini app
-* a parallel inite element solver
+* a parallel finite element solver for arbitrary geometries
 * a very narrow demonstration of
 [PUMI](https://github.com/SCOREC/core)
 
