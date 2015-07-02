@@ -1,4 +1,4 @@
 CXX = mpicxx
 CXXFLAGS = -O2 -Wall
-SCOREC = /Users/bng/codes/scorec
-PETSC = /Users/bng/codes/petsc
+SCOREC = $(SCOREC_INSTALL_DIR)
+PETSC = $(PETSC_INSTALL_DIR)
