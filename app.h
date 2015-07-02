@@ -6,10 +6,12 @@ class Mesh;
 class Field;
 class Vector3;
 template <class T> class NumberingOf;
-typedef NumberingOf<int> Numbering;
+typedef NumberingOf<long> GlobalNumbering;
 }
 
 namespace pe {
+
+class LinSys;
 
 struct AppInput
 {
@@ -31,19 +33,18 @@ class App
   private:
 
     void pre();
-    void solve();
+    void assemble();
     void post();
 
-    apf::Field* sol;
     apf::Mesh* mesh;
-    apf::Numbering* owned;
-    apf::Numbering* shared;
+    apf::Field* sol;
+    apf::GlobalNumbering* owned;
+    apf::GlobalNumbering* shared;
 
     int polynomialOrder;
     int integrationOrder;
 
-    int numLocalEqs;
-    int numGlobalEqs;
+    LinSys* linsys;
 
     double (*u)(apf::Vector3 const& p);
     double (*rhs)(apf::Vector3 const& p);
