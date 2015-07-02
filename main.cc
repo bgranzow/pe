@@ -52,5 +52,7 @@ int main(int argc, char** argv)
   pe::AppInput in = { m, 1, 1, u, rhs, out };
   pe::App app(in);
   app.run();
+  m->destroyNative();
+  apf::destroyMesh(m);
   finalize();
 }
