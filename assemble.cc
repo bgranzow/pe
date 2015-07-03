@@ -50,6 +50,7 @@ static void assembleSystem(
 static void applyBCToSystem(
     apf::Mesh* m,
     apf::GlobalNumbering* gn,
+    apf::Field* f,
     LinSys* ls)
 {
   gmi_model* model = m->getModel();
@@ -59,7 +60,7 @@ static void applyBCToSystem(
   {
     apf::DynamicArray<apf::Node> nodes;
     apf::ModelEntity* b = reinterpret_cast<apf::ModelEntity*>(boundary);
-    apf::getNodesOnClosure(m, b, nodes);
+    apf::getNodesOnClosure(m, b, nodes, apf::getShape(f));
     int nnodes = nodes.getSize();
     long rows[nnodes];
     for (int n=0; n < nnodes; ++n)
@@ -75,7 +76,7 @@ void App::assemble()
 {
   double t0 = PCU_Time();
   assembleSystem(polynomialOrder, mesh, sol, rhs, shared, linsys);
-  applyBCToSystem(mesh, shared, linsys);
+  applyBCToSystem(mesh, shared, sol, linsys);
   double t1 = PCU_Time();
   print("assembled in %f seconds", t1-t0);
 }
