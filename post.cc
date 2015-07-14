@@ -4,7 +4,6 @@
 #include <apf.h>
 #include <apfNumbering.h>
 #include <apfDynamicVector.h>
-
 #include <PCU.h>
 
 namespace pe {
@@ -31,7 +30,7 @@ static void attachSolution(
   apf::DynamicArray<apf::Node> nodes;
   apf::getNodes(n, nodes);
   ASSERT(nodes.getSize() == x.getSize());
-  for (int i=0; i < nodes.getSize(); ++i)
+  for (std::size_t i=0; i < nodes.getSize(); ++i)
     apf::setScalar(f, nodes[i].entity, nodes[i].node, x[i]);
   apf::synchronize(f);
 }
