@@ -16,12 +16,10 @@ CXXFLAGS += $(foreach includedir,$(PE_INCLUDE_DIRS),-I$(includedir))
 LDFLAGS += $(foreach librarydir,$(PE_LIBRARY_DIRS),-L$(librarydir))
 LDFLAGS += $(foreach library,$(PE_LIBRARIES),-l$(library))
 
-LINKER := $(CXX) $(CXXFLAGS) $(LDFLAGS)
-
 .PHONY: all test clean
 
 pe: $(PE_OBJS)
-	$(LINKER) $(PE_OBJS) -o pe
+	$(CXX) $(CXXFLAGS) $(PE_OBJS) -o pe $(LDFLAGS)
 
 clean:
 	$(RM) pe
