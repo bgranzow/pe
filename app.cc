@@ -13,7 +13,7 @@ App::App(AppInput& in) :
   rhs(in.rhs),
   out(in.out)
 {
-  print("sovling poisson's equation!");
+  print("solvifying poisson's equation!");
 }
 
 void App::run()
