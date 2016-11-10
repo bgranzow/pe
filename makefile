@@ -10,7 +10,7 @@ PE_SRCS := $(wildcard *.cc)
 PE_OBJS := ${PE_SRCS:.cc=.o}
 PE_INCLUDE_DIRS := ${PETSC_INC} ${SCOREC_INC}
 PE_LIBRARY_DIRS := ${PETSC_LIB} ${SCOREC_LIB}
-PE_LIBRARIES := petsc pcu gmi mds apf apf_zoltan ma parma
+PE_LIBRARIES := petsc pcu gmi mds apf apf_zoltan ma parma lion mth
 
 CXXFLAGS += $(foreach includedir,$(PE_INCLUDE_DIRS),-I$(includedir))
 LDFLAGS += $(foreach librarydir,$(PE_LIBRARY_DIRS),-L$(librarydir))
